@@ -3,6 +3,7 @@ FROM jenkins/jnlp-slave:4.13.3-1-jdk11
 USER root
 
 RUN  apt-get update \
+  && apt-get install -y gnupg2 \
   && echo 'deb http://deb.debian.org/debian buster-backports main' >> /etc/apt/sources.list \
   && echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_10/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list \
   && curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_10/Release.key |  apt-key add - \
